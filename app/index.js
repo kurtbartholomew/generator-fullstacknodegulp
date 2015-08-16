@@ -1,5 +1,6 @@
 var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
+var wiredep = require('wiredep');
 
 module.exports = generators.Base.extend({
   
@@ -30,7 +31,7 @@ module.exports = generators.Base.extend({
         dependencies: {}
       };
 
-      bowerJson.dependencies['normalize'] = "~1.0.4";
+      bowerJson.dependencies['normalize.css'] = "~3.0.3";
 
       this.fs.writeJSON('bower.json', bowerJson);
       this.fs.copy(
@@ -50,12 +51,17 @@ module.exports = generators.Base.extend({
       this.fs.copy(
         this.templatePath('client/src/index.html'),
         this.destinationPath('client/src/index.html'));
+      this.fs.copy(
+        this.templatePath('client/src/assets/css/main.css'),
+        this.destinationPath('client/src/assets/css/main.css'));
+      this.fs.copy(
+        this.templatePath('client/src/assets/js/main.js'),
+        this.destinationPath('client/src/assets/js/main.js'));
 
-      mkdirp('client/src/assets/css');
       mkdirp('client/src/assets/fonts');
       mkdirp('client/src/assets/images');
-      mkdirp('client/src/assets/js');
       mkdirp('client/src/assets/lib');
+      mkdirp('client/src/test');
     },
     e2e: function(){
       this.fs.copy(
@@ -97,6 +103,11 @@ module.exports = generators.Base.extend({
       mkdirp('server/views');
     }
   },
+
+  install: function() {
+    this.installDependencies();
+  },
+
   end: function(){
     var bowerJson = this.fs.readJSON(this.destinationPath('bower.json'));
 

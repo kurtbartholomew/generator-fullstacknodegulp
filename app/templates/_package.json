@@ -1,11 +1,16 @@
 {
-  "name": "<%- appName %>",
+  "name": "newapp",
   "version": "0.0.0",
+  "private": "true",
+  "description": "Full stack node gulp application scaffolding",
   "dependencies": {},
   "scripts": {
-    "test": "gulp test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {},
   "devDependencies": {
+    "browser-sync": "~2.7.12",
+    "chai": "^3.2.0",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
@@ -18,8 +23,9 @@
     "gulp-useref": "^1.3.0",
     "gulp-jshint": "~1.11.0",
     "jshint-stylish": "~2.0.0",
+    "mocha": "^2.2.5",
     "wiredep": "~2.2.2",
-    "browser-sync": "~2.7.12",
+    "supertest": "^1.0.1",
   },
   "engines": {
     "node": ">=0.10.0"

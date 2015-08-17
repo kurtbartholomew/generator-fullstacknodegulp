@@ -88,6 +88,12 @@ module.exports = generators.Base.extend({
         this.templatePath('server/config/middleware.js'),
         this.destinationPath('server/config/middleware.js'));
       this.fs.copy(
+        this.templatePath('server/config/authentication.js'),
+        this.destinationPath('server/config/authentication.js'));
+      this.fs.copy(
+        this.templatePath('server/config/utils.js'),
+        this.destinationPath('server/config/utils.js'));
+      this.fs.copy(
         this.templatePath('server/models/sampleModel.js'),
         this.destinationPath('server/models/sampleModel.js'));
       this.fs.copy(
